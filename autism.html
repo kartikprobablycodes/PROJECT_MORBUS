@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autism Spectrum // MORBUS Empathy Chamber</title>
+  <meta name="description" content="Explore the lived sensory perspective of autism, emotional topology, and develop deep empathy through interactive reflection.">
+  <link rel="stylesheet" href="css/condition.css">
+</head>
+<body>
+
+  <!-- Red Glowing Side Rails (User specification: red theme side color with black as main page color) -->
+  <div class="side-rail-left"></div>
+  <div class="side-rail-right"></div>
+  <div class="side-vignette-left"></div>
+  <div class="side-vignette-right"></div>
+  <div class="bg-ambient-orb"></div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="condition-nav-header">
+    <a href="index.html" class="nav-back-link">
+      ← RETURN TO DNA HELIX
+    </a>
+    <div class="nav-center-badge">
+      CONDITION // 01 — AUTISM SPECTRUM
+    </div>
+    <button class="nav-audio-btn" id="audio-toggle">
+      <span>SOUND:</span> <span id="audio-state">ACTIVE</span>
+    </button>
+  </header>
+
+  <!-- Main Container -->
+  <main class="condition-container">
+    
+    <!-- Hero Section -->
+    <section class="condition-hero">
+      <span class="hero-tag">NEUROBIOLOGICAL DIVERSITY // CHROMOSOME CLUSTERS</span>
+      <h1 class="hero-title">AUTISM SPECTRUM</h1>
+      <p class="hero-lead">
+        Autism is neither an illness nor a deficit; it is an alternate neurological architecture of experiencing reality—where sensory signals, hyperfocus, and internal emotion are registered with extraordinary intensity and unfiltered fidelity.
+      </p>
+
+      <div class="hero-metrics-grid">
+        <div class="metric-card">
+          <div class="metric-val">1 in 36</div>
+          <div class="metric-label">Estimated Global Prevalence</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">42%</div>
+          <div class="metric-label">Sensory Processing Hyper-Acuity</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">100%</div>
+          <div class="metric-label">Human Authenticity & Presence</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">CYTOSINE</div>
+          <div class="metric-label">DNA Helix Anchor Locus</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Lived Narrative -->
+    <section class="narrative-section">
+      <span class="narrative-badge">LIVED EXPERIENCE // REAL HUMAN VOICE</span>
+      <h2 class="narrative-heading">Marcus & The Fluorescent Symphony</h2>
+      
+      <p class="narrative-body">
+        To 26-year-old software architect Marcus, walking into a typical grocery store or open-plan office isn't just an errand—it is an immersion into an unbuffered sensory storm. While neurotypical brains possess automated neurological filters that mute the 60Hz hum of fluorescent bulbs, the squeak of sneakers on linoleum, and the perfume of ten passersby, Marcus’s nervous system receives every input at maximum volume simultaneously.
+      </p>
+
+      <div class="narrative-quote">
+        “People often interpret my silence or lack of eye contact as detachment. They don't see that I am not feeling too little—I am feeling everything, everywhere, all at once. Eye contact feels like staring into the high beams of an oncoming truck while trying to solve a calculus equation.”
+      </div>
+
+      <p class="narrative-body">
+        When Marcus experiences what outsiders call a "meltdown" or "shutdown," it is not a temper tantrum; it is a neurological circuit breaker tripping to protect his brain from catastrophic sensory overload. When given a quiet space, clear communication without ambiguous subtext, and the freedom to stim (rhythmic rocking or finger-tapping), Marcus unlocks astounding abilities: identifying subtle algorithmic anomalies in seconds that take teams days to trace.
+      </p>
+    </section>
+
+    <!-- Interactive Sensory Overload Simulator -->
+    <section class="simulator-section">
+      <div class="simulator-header">
+        <h3 class="simulator-title">Sensory Overload Perception Chamber</h3>
+        <p class="simulator-desc">
+          Adjust the sensory inflow sliders below to experience how ambient environmental noise and visual clutter compound to distort cognitive clarity for an autistic nervous system.
+        </p>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>Fluorescent Flicker & Lumens</span>
+            <span id="light-val">20% (Calm)</span>
+          </div>
+          <input type="range" class="custom-range" id="light-slider" min="0" max="100" value="20">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>Ambient Acoustic Cacophony (Voices, Machinery)</span>
+            <span id="noise-val">15% (Quiet)</span>
+          </div>
+          <input type="range" class="custom-range" id="noise-slider" min="0" max="100" value="15">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>Social Ambiguity Demand (Double Entendres, Eye Contact)</span>
+            <span id="social-val">10% (Safe)</span>
+          </div>
+          <input type="range" class="custom-range" id="social-slider" min="0" max="100" value="10">
+        </div>
+      </div>
+
+      <!-- Live Simulated Visual Field -->
+      <div class="sensory-viewport" id="sensory-box">
+        <div class="sensory-text-layer" id="sensory-text">
+          "CAN YOU HEAR ME BENEATH THE NOISE?"
+        </div>
+      </div>
+
+      <!-- Autism Color Wheel Integration -->
+      <div class="color-wheel-container">
+        <img src="images_800_lktlqftkn5d.jpeg" alt="Autism Color Wheel illustrating emotional spectrum" class="color-wheel-img">
+        <div class="color-wheel-info">
+          <h4>The Emotional & Sensory Color Spectrum</h4>
+          <p>
+            Autism is not a linear gradient from "mild" to "severe." It is a multidimensional color wheel where individuals navigate distinct emotional and sensory zones.
+          </p>
+          <p>
+            From the <strong>Peaceful & Calm Tranquil (Sky Blue)</strong> state to the high-alert <strong>Urgent & Anxious (Coral Red)</strong>, an autistic person’s needs shift depending on sensory safety, communication accommodation, and emotional validation.
+          </p>
+          <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--red-primary);">
+            KEY INSIGHT: Meltdowns occur when an individual is trapped in high-alert states without an escape valve or compassionate companion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         THE EMPATHY REFLECTION CHAMBER (QUESTIONING THE USER AT THE END)
+         ========================================================================== -->
+    <section class="empathy-chamber">
+      <div class="heart-beater" id="heart-trigger" title="Click to listen to heartbeat">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <span class="chamber-eyebrow">CHAMBER OF HEART REFLECTION // INQUIRY 01</span>
+      
+      <h2 class="chamber-question">
+        "When the world feels ten times louder, brighter, and faster than you can bear, what would you need from the person standing beside you?"
+      </h2>
+
+      <p class="chamber-subquestion">
+        Pause for a breath. Shift your perspective from observer to human heart. How would you want the world to respond to your vulnerability?
+      </p>
+
+      <div class="empathy-choices-grid">
+        <div class="empathy-option" data-pledge="I choose to offer quiet stillness and eliminate judgment when someone near me is overwhelmed.">
+          <div class="option-radio"></div>
+          <div class="option-text">
+            <strong>Unconditional Patience:</strong> Granting silence and physical breathing room without demanding explanations or social conformity.
+          </div>
+        </div>
+
+        <div class="empathy-option" data-pledge="I will listen directly to literal needs rather than imposing neurotypical social expectations.">
+          <div class="option-radio"></div>
+          <div class="option-text">
+            <strong>Direct Clarity:</strong> Communicating with transparent kindness, stripping away sarcasm, and respecting sensory boundaries.
+          </div>
+        </div>
+
+        <div class="empathy-option" data-pledge="I will recognize self-regulation stims as healthy coping mechanisms rather than oddities.">
+          <div class="option-radio"></div>
+          <div class="option-text">
+            <strong>Dignity in Regulation:</strong> Normalizing stimming, rocking, or noise-canceling headphones as vital human safety tools.
+          </div>
+        </div>
+
+        <div class="empathy-option" data-pledge="I will remember that sensory distress is real physical agony, not behavioral defiance.">
+          <div class="option-radio"></div>
+          <div class="option-text">
+            <strong>Validation of Experience:</strong> Believing their reality when they say an environment hurts, even if it feels harmless to me.
+          </div>
+        </div>
+      </div>
+
+      <textarea class="reflection-textarea" id="user-reflection" placeholder="Type your personal realization or commitment to empathy here..."></textarea>
+
+      <div>
+        <button class="btn-seal-empathy" id="btn-seal">
+          <span>SEAL EMPATHY IN YOUR HEART</span>
+          <span>♥</span>
+        </button>
+      </div>
+
+      <!-- Sealed Result Display -->
+      <div class="empathy-sealed-result" id="sealed-box">
+        <h3 class="sealed-title">EMPATHY PLEDGE EMBEDDED</h3>
+        <p class="sealed-desc" id="pledge-echo">
+          "I choose to offer quiet stillness and eliminate judgment when someone near me is overwhelmed."
+        </p>
+        <div class="next-steps-row">
+          <a href="adhd.html" class="btn-next-condition">ADVANCE TO CONDITION 02: ADHD →</a>
+          <a href="index.html" class="btn-back-nexus">RETURN TO DNA HELIX</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Audio Engine & Scripts -->
+  <script src="js/audio-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Audio Setup
+      const audioBtn = document.getElementById('audio-toggle');
+      const audioState = document.getElementById('audio-state');
+      const heartTrigger = document.getElementById('heart-trigger');
+
+      const initAudio = () => {
+        if (window.morbusAudio) {
+          window.morbusAudio.ensureStarted();
+        }
+        window.removeEventListener('click', initAudio);
+      };
+      window.addEventListener('click', initAudio);
+
+      audioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.morbusAudio) {
+          window.morbusAudio.ensureStarted();
+          const muted = window.morbusAudio.toggleMute();
+          audioState.textContent = muted ? 'MUTED' : 'ACTIVE';
+        }
+      });
+
+      // Heart Pulse Click
+      heartTrigger.addEventListener('click', () => {
+        if (window.morbusAudio) {
+          window.morbusAudio.playHeartPulse();
+        }
+      });
+
+      // Sensory Simulator Sliders
+      const lightSlider = document.getElementById('light-slider');
+      const noiseSlider = document.getElementById('noise-slider');
+      const socialSlider = document.getElementById('social-slider');
+      const lightVal = document.getElementById('light-val');
+      const noiseVal = document.getElementById('noise-val');
+      const socialVal = document.getElementById('social-val');
+      const sensoryBox = document.getElementById('sensory-box');
+      const sensoryText = document.getElementById('sensory-text');
+
+      const updateSensory = () => {
+        const l = parseInt(lightSlider.value);
+        const n = parseInt(noiseSlider.value);
+        const s = parseInt(socialSlider.value);
+
+        lightVal.textContent = `${l}% (${l > 60 ? 'Strobe Overload' : l > 30 ? 'Harsh' : 'Calm'})`;
+        noiseVal.textContent = `${n}% (${n > 60 ? 'Deafening Cacophony' : n > 30 ? 'Intrusive' : 'Quiet'})`;
+        socialVal.textContent = `${s}% (${s > 60 ? 'Extreme Pressure' : s > 30 ? 'Ambiguous' : 'Safe'})`;
+
+        const totalOverload = (l + n + s) / 300;
+
+        // Visual simulation: extreme blur, jitter, chromatic aberration, high brightness
+        const blur = totalOverload * 12;
+        const brightness = 1 + totalOverload * 1.8;
+        const jitter = totalOverload * 10;
+        
+        sensoryBox.style.filter = `blur(${blur}px) brightness(${brightness})`;
+        sensoryBox.style.background = `rgba(${Math.floor(255 * totalOverload)}, 0, ${Math.floor(80 * totalOverload)}, 0.9)`;
+        
+        if (totalOverload > 0.65) {
+          sensoryText.textContent = "SYSTEM OVERLOAD // CIRCUITS SATURATED // NEED RETREAT";
+          sensoryText.style.letterSpacing = `${4 + Math.random() * 8}px`;
+        } else {
+          sensoryText.textContent = '"CAN YOU HEAR ME BENEATH THE NOISE?"';
+          sensoryText.style.letterSpacing = '1px';
+        }
+      };
+
+      lightSlider.addEventListener('input', updateSensory);
+      noiseSlider.addEventListener('input', updateSensory);
+      socialSlider.addEventListener('input', updateSensory);
+
+      // Empathy Choices
+      const options = document.querySelectorAll('.empathy-option');
+      let selectedPledge = "I choose to offer quiet stillness and eliminate judgment when someone near me is overwhelmed.";
+
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          selectedPledge = opt.getAttribute('data-pledge');
+          if (window.morbusAudio) {
+            window.morbusAudio.playCardHover();
+          }
+        });
+      });
+      // Select first by default
+      if (options[0]) options[0].classList.add('selected');
+
+      // Seal Empathy Button
+      const btnSeal = document.getElementById('btn-seal');
+      const sealedBox = document.getElementById('sealed-box');
+      const pledgeEcho = document.getElementById('pledge-echo');
+      const customInput = document.getElementById('user-reflection');
+
+      btnSeal.addEventListener('click', () => {
+        if (customInput.value.trim().length > 0) {
+          selectedPledge = customInput.value.trim();
+        }
+
+        pledgeEcho.textContent = `"${selectedPledge}"`;
+        sealedBox.classList.add('active');
+
+        // Play transcendent empathy soundscape chord & heart pulse
+        if (window.morbusAudio) {
+          window.morbusAudio.playEmpathyResonance();
+        }
+
+        // Scroll to sealed result smoothly
+        sealedBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MORBUS // Helix of Empathy — 3D Neurodiversity Experience</title>
+  <meta name="description" content="An Active Theory-inspired WebGL 3D awareness experience celebrating cognitive diversity, featuring a centered rotating DNA helix, orbital interactive condition cards, and procedural audio.">
+
+  <!-- Favicon / Brand Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2300f3ff'/></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Three.js & GSAP via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Fluid Active Theory Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-dot" id="cursor-dot"></div>
+
+  <!-- Warp Flash Effect for 3D Camera Dives -->
+  <div id="warp-flash"></div>
+
+  <!-- WebGL 3D Container -->
+  <div id="webgl-container"></div>
+
+  <!-- Floating UI Overlay -->
+  <div class="ui-overlay">
+    <!-- Header -->
+    <header class="header-bar">
+      <div class="logo-group">
+        <div class="logo-symbol"></div>
+        <div class="logo-title">
+          MORBUS
+          <span class="logo-subtitle">HELIX OF EMPATHY // V3.2</span>
+        </div>
+      </div>
+
+      <div class="header-meta">
+        <div class="meta-status">
+          <span class="status-dot"></span>
+          <span>DNA_LOCUS_MONITOR // ACTIVE</span>
+        </div>
+
+        <!-- Web Audio Procedural Synthesizer Toggle -->
+        <button class="audio-toggle-btn" id="audio-toggle" title="Toggle Procedural Audio Soundscape">
+          <div class="soundwave-bars">
+            <span class="soundwave-bar"></span>
+            <span class="soundwave-bar"></span>
+            <span class="soundwave-bar"></span>
+            <span class="soundwave-bar"></span>
+          </div>
+          <span id="audio-label">AMBIENT SOUND [ON]</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Center HUD (Micro Data) -->
+    <div class="center-hud">
+      <div class="dna-label-pill" id="dna-anchor-label">DNA HELIX // CHROMOSOMAL NEXUS</div>
+    </div>
+
+    <!-- Bottom Dock -->
+    <div class="bottom-dock">
+      <div class="dock-left">
+        <div class="card-counter" id="card-counter">
+          01 <span>/ 05</span>
+        </div>
+        <h1 class="current-condition-title" id="cond-title">AUTISM SPECTRUM</h1>
+        <p class="current-condition-subtitle" id="cond-subtitle">
+          Sensory perception, hyperfocus, and deep alternate dimensions of cognitive synthesis.
+        </p>
+        <div class="dock-actions">
+          <a href="autism.html" class="btn-warp" id="btn-explore">
+            EXPLORE PERSPECTIVE  →
+          </a>
+        </div>
+      </div>
+
+      <div class="dock-right">
+        <div class="scroll-indicator-container">
+          <span>SCROLL TO ROTATE HELIX</span>
+          <div class="scroll-track">
+            <div class="scroll-fill" id="scroll-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Rail Quick-Nav Dots -->
+  <nav class="quick-nav" aria-label="Conditions Quick Navigation">
+    <button class="quick-nav-item active" data-index="0" title="01 - Autism Spectrum">
+      <span class="quick-nav-tooltip">01 Autism Spectrum</span>
+    </button>
+    <button class="quick-nav-item" data-index="1" title="02 - ADHD Spectrum">
+      <span class="quick-nav-tooltip">02 ADHD Spectrum</span>
+    </button>
+    <button class="quick-nav-item" data-index="2" title="03 - Down Syndrome">
+      <span class="quick-nav-tooltip">03 Down Syndrome</span>
+    </button>
+    <button class="quick-nav-item" data-index="3" title="04 - Bipolar Diversity">
+      <span class="quick-nav-tooltip">04 Bipolar Diversity</span>
+    </button>
+    <button class="quick-nav-item" data-index="4" title="05 - Tourette Syndrome">
+      <span class="quick-nav-tooltip">05 Tourette Syndrome</span>
+    </button>
+  </nav>
+
+  <!-- Virtual Scroll Spacer (Enables natural smooth scroll mechanics) -->
+  <div class="scroll-sections-wrapper">
+    <div class="scroll-step" data-index="0"></div>
+    <div class="scroll-step" data-index="1"></div>
+    <div class="scroll-step" data-index="2"></div>
+    <div class="scroll-step" data-index="3"></div>
+    <div class="scroll-step" data-index="4"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-engine.js"></script>
+  <script src="js/shaders.js"></script>
+  <script src="js/three-scene.js"></script>
+
+  <script>
+    // Initialize Experience
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Start 3D WebGL Scene
+      window.initMorbusScene();
+
+      // 2. Custom Cursor Tracking
+      const cursor = document.getElementById('cursor');
+      const cursorDot = document.getElementById('cursor-dot');
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let curX = mouseX;
+      let curY = mouseY;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      });
+
+      const updateCursor = () => {
+        curX += (mouseX - curX) * 0.18;
+        curY += (mouseY - curY) * 0.18;
+        cursor.style.left = `${curX}px`;
+        cursor.style.top = `${curY}px`;
+        requestAnimationFrame(updateCursor);
+      };
+      updateCursor();
+
+      // 3. Audio Controller
+      const audioToggle = document.getElementById('audio-toggle');
+      const audioLabel = document.getElementById('audio-label');
+
+      // Resume Audio on first user gesture anywhere
+      const resumeAudioOnGesture = () => {
+        if (window.morbusAudio) {
+          window.morbusAudio.ensureStarted();
+        }
+        window.removeEventListener('click', resumeAudioOnGesture);
+        window.removeEventListener('keydown', resumeAudioOnGesture);
+      };
+      window.addEventListener('click', resumeAudioOnGesture);
+      window.addEventListener('keydown', resumeAudioOnGesture);
+
+      audioToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.morbusAudio) {
+          window.morbusAudio.ensureStarted();
+          const muted = window.morbusAudio.toggleMute();
+          if (muted) {
+            audioToggle.classList.add('muted');
+            audioLabel.textContent = 'AMBIENT SOUND [OFF]';
+          } else {
+            audioToggle.classList.remove('muted');
+            audioLabel.textContent = 'AMBIENT SOUND [ON]';
+          }
+        }
+      });
+
+      // 4. Synchronization with 3D Scene Card Focus Changes
+      const titleEl = document.getElementById('cond-title');
+      const subtitleEl = document.getElementById('cond-subtitle');
+      const counterEl = document.getElementById('card-counter');
+      const dnaAnchorLabel = document.getElementById('dna-anchor-label');
+      const btnExplore = document.getElementById('btn-explore');
+      const scrollFill = document.getElementById('scroll-fill');
+      const navDots = document.querySelectorAll('.quick-nav-item');
+
+      window.onMorbusCardChanged = (condition, index) => {
+        if (!condition) return;
+
+        // Animate text update with GSAP
+        if (window.gsap) {
+          gsap.fromTo(titleEl, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35 });
+        }
+
+        titleEl.textContent = condition.title;
+        subtitleEl.textContent = condition.tagline;
+        counterEl.innerHTML = `${condition.index} <span>/ 05</span>`;
+        dnaAnchorLabel.textContent = `DNA HELIX // ${condition.dnaBase}`;
+        btnExplore.setAttribute('href', condition.url);
+
+        // Update nav dots
+        navDots.forEach((dot, dIdx) => {
+          if (dIdx === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      };
+
+      // 5. Scroll Progress fill calculation
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const ratio = (window.scrollY / totalHeight) * 100;
+          scrollFill.style.width = `${Math.min(Math.max(ratio, 5), 100)}%`;
+        }
+      });
+
+      // 6. Quick nav dot clicks
+      navDots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.getAttribute('data-index'));
+          const stepHeight = window.innerHeight;
+          window.scrollTo({
+            top: idx * stepHeight,
+            behavior: 'smooth'
+          });
+          if (window.morbusAudio) {
+            window.morbusAudio.playCardHover();
+          }
+        });
+      });
+
+      // 7. Warp Explore Button Click handler
+      btnExplore.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = btnExplore.getAttribute('href');
+        if (window.morbusScene) {
+          const activeCond = window.morbusScene.conditions[window.morbusScene.activeCardIndex];
+          window.morbusScene.warpIntoCard(activeCond);
+        } else {
+          window.location.href = url;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
